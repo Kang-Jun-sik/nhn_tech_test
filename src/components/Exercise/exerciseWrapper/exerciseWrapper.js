@@ -37,7 +37,7 @@ export default class ExerciseWrapper {
         window.instanceMap.set(this.exerciseDelBtn.uid, this.exerciseDelBtn);
 
         //Total Time
-        this.exerciseTime = new ExerciseTime('전체시간 4분 25초');
+        this.exerciseTime = new ExerciseTime();
         this.$el.appendChild(this.exerciseTime.$el);
         window.instanceMap.set(this.exerciseTime.uid, this.exerciseTime);
 
@@ -68,7 +68,9 @@ export default class ExerciseWrapper {
         this.exerciseInputUid = this.exerciseInput.uid; //exercise wrapper <-- exercise Input
 
         this.exerciseInput.exerciseWrapperUid = this.uid; //exercise Input <-- exercise wrapper
+        this.exerciseTime.exerciseWrapperUid = this.uid;
         this.exerciseExecuteButton.exerciseWrapperUid = this.uid; //exercise Execute button <-- exercise wrapper
+        this.exerciseDelBtn.exerciseWrapperUid = this.uid; //exercise Delete Button <-- exercise wrapper
         this.exerciseAddBtn.exerciseInputUid = this.exerciseInput.uid; //exercise Add button <-- exercise Input
     }
 

@@ -5,6 +5,10 @@ export default class ExerciseItem {
 
     uid = '';
     exerciseWrapperUid = '';
+    exerciseInputUid = '';
+    exerciseName = '';
+    exerciseSecond = '';
+    exerciseSet = '';
 
     /**
      *
@@ -14,7 +18,14 @@ export default class ExerciseItem {
         this.$el = document.createElement('div');
         this.$el.classList.add('exercise-item');
         this.$el.setAttribute('uid', this.uid);
-        this.exerciseName = exerciseName;
+        this.exerciseName = item[0];
+        this.exerciseSecond = item[1];
+        this.exerciseSet = item[2];
+        this.exerciseText = `${this.exerciseName} ${this.exerciseSecond}초 ${this.exerciseSet}세트`;
+    }
+
+    setExerciseText(param){
+        this.$el.querySelector('.exercise-item-text').textContent = param;
     }
 
     setRoutineItemText(text) {
@@ -24,7 +35,7 @@ export default class ExerciseItem {
     render() {
         this.$el.innerHTML = `
             <input class="exercise-item-checkbox" type="checkbox"/>
-            <p class='exercise-item-text'>${this.exerciseName}</p>
+            <p class='exercise-item-text'>${this.exerciseText}</p>
             <button class='exercise-item-btn modify-btn'>수정</button>
         `;
         this.eventHandler();
@@ -36,11 +47,10 @@ export default class ExerciseItem {
     }
 
     modifyExerciseItem(e) {
-        // const routineTextBox = window.instanceMap.get(this.routineTextBoxUid);
-        // routineTextBox.inputMode = 'Modify';
-        // routineTextBox.modifyRoutineItemUid = this.uid;
-        // routineTextBox.show();
-        // routineTextBox.setText(this.routineName);
-        // routineTextBox.onFocus();
+        const exerciseInput = window.instanceMap.get(this.exerciseInputUid);
+        exerciseInput.inputMode = "Modify"; //수정모드로 세팅
+        exerciseInput.modifyExerciseItemUid = this.uid;
+        exerciseInput.show();
+        exerciseInput.settingExerciseInfo(this.exerciseName, this.exerciseSecond, this.exerciseSet);
     }
 }

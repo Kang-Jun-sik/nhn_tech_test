@@ -7,6 +7,8 @@ export default class ExerciseInput {
     exerciseWrapperUid = '';
     routineWrapperUid = '';
     inputMode = '';
+    modifyExerciseItemUid = '';
+
     /**
      *
      */
@@ -38,6 +40,12 @@ export default class ExerciseInput {
         this.cancelButtonClickBinding();
     }
 
+    settingExerciseInfo(...info) {
+        this.$el.querySelector('.exercise-input-name').value = info[0];
+        this.$el.querySelector('.exercise-input-second').value = info[1];
+        this.$el.querySelector('.exercise-input-set').value = info[2];
+    }
+
     onFocus() {
         this.$el.querySelector('.exercise-input-name').focus();
     }
@@ -48,9 +56,6 @@ export default class ExerciseInput {
     }
 
     clear() {
-        this.exerciseName = ''
-        this.exerciseSecond = '';
-        this.exerciseSet = '';
         this.$el.querySelector('.exercise-input-name').value = '';
         this.$el.querySelector('.exercise-input-second').value = '';
         this.$el.querySelector('.exercise-input-set').value = '';
@@ -63,34 +68,68 @@ export default class ExerciseInput {
     keydownExecute(e) {
         //Enter Key
         if (e.keyCode === 13) {
-            const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
-            const routineWrapper = window.instanceMap.get(exerciseWrapper.routineWrapperUid);
-            const selectedRoutine = routineWrapper.selectedRoutine;
-
-            switch (this.inputMode) {
-                case "AddMode":
-                    if(!this.$el.querySelector('.exercise-input-name').value) {
-                        alert('운동이름은 필수값입니다');
-                        return;
-                    }
-                    const exerciseItemText = this.$el.querySelector('.exercise-input-name').value;
-                    const exerciseSecond =  exerciseSecond ? this.$el.querySelector('.exercise-input-second').value : 30;
-                    const exerciseSet = exerciseSet ? this.$el.querySelector('.exercise-input-set').value : 1;
-                    const exerciseItem = new ExerciseItem(exerciseItemText, exerciseSecond, exerciseSet);
-                    exerciseItem.render();
-                    exerciseWrapper.getExerciseItemsArea().appendChild(exerciseItem.$el);
-                    selectedRoutine.exerciseItems.set(exerciseItem.uid, exerciseItem); //해당 루틴에 추가해준다.
-                    this.clear();
-                    this.hide();
-                    break;
-                case 'Modify' :
-                    break;
-            }
+            this.itemAddModify();
         } else if (e.keyCode === 27) {
             this.clear();
             this.hide();
         }
     }
+
+    itemAddModify() {
+        const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
+        const routineWrapper = window.instanceMap.get(exerciseWrapper.routineWrapperUid);
+        const selectedRoutine = routineWrapper.selectedRoutine;
+        const selectExercise = selectedRoutine.exerciseItems.get(this.modifyExerciseItemUid);
+
+        if (!this.checkExerciseItemText(this.$el.querySelector('.exercise-input-name').value)) {
+            alert('운동 이름은 필수값 입니다.');
+            return;
+        }
+        const exerciseItemText = this.$el.querySelector('.exercise-input-name').value.replace(/(\s*)/g, "");
+        const exerciseSecond = this.validateExerciseSecond(this.$el.querySelector('.exercise-input-second').value);
+        const exerciseSet = this.validateExerciseSet(this.$el.querySelector('.exercise-input-set').value);
+
+        switch (this.inputMode) {
+            case "AddMode":
+                const exerciseItem = new ExerciseItem(exerciseItemText, exerciseSecond, exerciseSet);
+                exerciseItem.exerciseInputUid = this.uid;
+                exerciseItem.render();
+                exerciseWrapper.getExerciseItemsArea().appendChild(exerciseItem.$el);
+                selectedRoutine.exerciseItems.set(exerciseItem.uid, exerciseItem); //해당 루틴에 추가해준다.
+
+                this.clear();
+                this.hide();
+                break;
+            case 'Modify' :
+                selectExercise.exerciseName = exerciseItemText;
+                selectExercise.exerciseSecond = exerciseSecond;
+                selectExercise.exerciseSet = exerciseSet;
+                selectExercise.setExerciseText(`${exerciseItemText} ${exerciseSecond}초 ${exerciseSet}세트`);
+                this.clear();
+                this.hide();
+                break;
+        }
+        const timer = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
+        timer.settingTime();
+    }
+
+    checkExerciseItemText(exerciseName) {
+        return String(exerciseName) ? true : false;
+    }
+
+    validateExerciseSecond(param) {
+        if (!param)
+            return 30;
+        else if (param >= 1 && param <= 60)
+            return param;
+        else
+            return 30;
+    }
+
+    validateExerciseSet(param) {
+        return param ? param : 1;
+    }
+
 
     keydownButtonBinding() {
         this.$el.addEventListener('keydown', this.keydownExecute.bind(this))
@@ -102,7 +141,7 @@ export default class ExerciseInput {
     }
 
     storeButtonClick(e) {
-
+        this.itemAddModify();
     }
 
     cancelButtonClickBinding() {
