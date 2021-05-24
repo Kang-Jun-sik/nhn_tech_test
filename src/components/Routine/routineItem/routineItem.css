@@ -1,0 +1,22 @@
+.routine-item {
+    display: block;
+    cursor: pointer;
+}
+
+.routine-item.selected{
+    background: #F0F8FF;
+}
+
+.routine-name{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.routine-item-btn{
+    border-radius: 10px;
+    height: 30px;
+    float: right;
+    margin-top: 11px;
+    margin-left: 5px;
+    cursor: pointer;
+}

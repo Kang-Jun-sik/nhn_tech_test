@@ -1,0 +1,10 @@
+.exercise-addButton{
+    width: 150px;
+    float: left;
+    height: 50px;
+    border-radius: 12px;
+    margin-right: 3px;
+    border: none;
+    font-weight: bold;
+    cursor:pointer;
+}

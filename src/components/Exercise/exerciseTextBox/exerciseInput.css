@@ -1,0 +1,37 @@
+.exercise-input{
+    display: block;
+}
+
+.exercise-input-name {
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.exercise-input-second {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.exercise-input-set {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.exercise-input-wrapper {
+    height: 40px;
+    padding-top: 15px;
+    text-align: center;
+    border-style: groove;
+}
+
+.exercise-btn-wrapper {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.exercise-btn {
+    border-radius: 5px;
+}

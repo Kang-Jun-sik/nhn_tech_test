@@ -1,0 +1,9 @@
+.routine-wrapper{
+    width: 330px;
+    height: 1000px;
+    background : white;
+    padding: 10px;
+    margin-left:10px;
+    margin-bottom: 10px;
+    float: left;
+}

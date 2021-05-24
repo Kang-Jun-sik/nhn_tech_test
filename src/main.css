@@ -1,0 +1,8 @@
+#app {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    width:900px;
+    min-height:850px;
+    background:#F0F8FF;
+}

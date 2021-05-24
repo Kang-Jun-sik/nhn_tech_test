@@ -1,0 +1,8 @@
+.exercise-deleteButton{
+    width: 75px;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor:pointer;
+}

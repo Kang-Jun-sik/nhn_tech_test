@@ -1,0 +1,8 @@
+.exercise-item-text{
+    display: inline-block;
+}
+
+.exercise-item-btn.modify-btn{
+    float: right;
+    margin-top: 15px;
+}

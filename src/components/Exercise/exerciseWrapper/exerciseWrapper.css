@@ -1,0 +1,9 @@
+.exercise-wrapper{
+    width: 500px;
+    height: 1000px;
+    background : white;
+    padding: 10px;
+    margin-right:10px;
+    margin-bottom: 10px;
+    float: right;
+}
