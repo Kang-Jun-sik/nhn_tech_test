@@ -1,0 +1,10 @@
+.exercise-execute-toolbar{
+    min-height: 40px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    background: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1em;
+    padding-top: 3px;
+}

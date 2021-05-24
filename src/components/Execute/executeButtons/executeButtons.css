@@ -1,0 +1,14 @@
+.exercise-execute-buttons {
+    display: block;
+    margin-top: 10px;
+    text-align : center;
+}
+
+.execute-btn {
+    width: 100px;
+    height: 30px;
+    background: whitesmoke;
+    border-radius: 12px;
+    cursor: pointer;
+}
+

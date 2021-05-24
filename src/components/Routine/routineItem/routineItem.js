@@ -51,9 +51,11 @@ export default class RoutineItem {
     deleteRoutineItem(e) {
         if (confirm(`${this.routineName}을 삭제 하시겠습니까?`)) {
             const routineWrapper = window.instanceMap.get(this.routineWrapperUid);
+            const exerciseWrapper = window.instanceMap.get(routineWrapper.exerciseWrapperUid);
             routineWrapper.disableExercise();
             window.instanceMap.delete(this.uid);
             this.$el.remove();
+            exerciseWrapper.clearExerciseItems();
         }
     }
 }

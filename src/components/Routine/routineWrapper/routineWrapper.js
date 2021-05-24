@@ -56,6 +56,7 @@ export default class RoutineWrapper {
     //하이라이팅 및 선택 로직 처리
     onSelectRoutineItem(e) {
         const routineItem = e.target.closest('.routine-item');
+        const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
 
         if (routineItem) {
             let rUid = routineItem.getAttribute('uid');
@@ -66,6 +67,8 @@ export default class RoutineWrapper {
                     item.$el.classList.remove('selected');
             })
             routineItem.classList.add('selected');
+            exerciseWrapper.clearExerciseItems();
+            this.selectedRoutine.exerciseItems.forEach((value) => exerciseWrapper.getExerciseItemsArea().appendChild(value.$el));
         }
         this.enableExercise();
     }

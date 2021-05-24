@@ -79,4 +79,8 @@ export default class ExerciseWrapper {
     getExerciseItemsArea() {
         return this.exerciseItemArea;
     }
+
+    clearExerciseItems() {
+        this.exerciseItemArea.querySelectorAll('.exercise-item').forEach(n => n.remove());
+    }
 }
