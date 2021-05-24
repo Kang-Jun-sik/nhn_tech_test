@@ -19,9 +19,14 @@ export default class ExerciseExecuteButton {
 
     executeExercise(e) {
         const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
+        const routineWrapper = window.instanceMap.get(exerciseWrapper.routineWrapperUid);
         const pageWrapper = window.instanceMap.get(exerciseWrapper.pageWrapperUid);
         const executeWrapper = window.instanceMap.get(exerciseWrapper.executeWrapperUid);
+        const executeItemWrapper = window.instanceMap.get(executeWrapper.executeItemsWrapperUid);
+
         pageWrapper.hide();
+        executeWrapper.show();
+        routineWrapper.selectedRoutine.exerciseItems.forEach((value) => executeItemWrapper.getExecuteItemsArea().appendChild(value.$el));
     }
 
     onDisable() {

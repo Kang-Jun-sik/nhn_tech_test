@@ -21,5 +21,34 @@ export default class ExecuteButtons {
             <button class='execute-btn exercise-stop-btn'>운동 멈추기</button>
             <button class='execute-btn exercise-complete-btn'>완료</button>
         `;
+        this.eventHandler();
     }
+    eventHandler() {
+        const pauseBtn = this.$el.querySelector('.execute-pause-btn');
+        const restartBtn = this.$el.querySelector('.execute-restart-btn');
+        const stopBtn = this.$el.querySelector('.exercise-stop-btn');
+        const completeBtn = this.$el.querySelector('.exercise-complete-btn');
+
+        pauseBtn.addEventListener('click', this.pauseBtnExecute.bind(this))
+        restartBtn.addEventListener('click', this.restartBtnExecute.bind(this));
+        stopBtn.addEventListener('click', this.stopBtnExecute.bind(this));
+        completeBtn.addEventListener('click', this.completeBtnExecute.bind(this));
+    }
+
+    pauseBtnExecute(e){
+        console.log('test');
+    }
+
+    restartBtnExecute(e){
+        console.log('test');
+    }
+
+    stopBtnExecute(e){
+        console.log('test');
+    }
+
+    completeBtnExecute(e){
+        console.log('test');
+    }
+
 }

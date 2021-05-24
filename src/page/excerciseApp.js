@@ -48,6 +48,7 @@ export default class ExerciseApp {
         this.executeWrapper = new ExecuteWrapper();
         this.$el.appendChild(this.executeWrapper.$el);
         window.instanceMap.set(this.executeWrapper.uid, this.executeWrapper);
+        this.executeWrapper.hide();
 
         //컴포넌트간 통신을 위한 UID 주입
         this.routineWrapper.exerciseWrapperUid = this.exerciseWrapper.uid;

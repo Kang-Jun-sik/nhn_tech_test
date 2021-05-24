@@ -56,7 +56,7 @@ export default class ExerciseWrapper {
         this.$el.appendChild(this.exerciseInput.$el);
         window.instanceMap.set(this.exerciseInput.uid, this.exerciseInput);
 
-        //운동 시작버튼
+        //운동 실행버튼
         this.exerciseExecuteButton = new ExerciseExecuteButton("운동 시작");
         this.$el.appendChild(this.exerciseExecuteButton.$el);
         window.instanceMap.set(this.exerciseExecuteButton.uid, this.exerciseExecuteButton);
