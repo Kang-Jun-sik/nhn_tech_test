@@ -1,5 +1,5 @@
 import './exerciseExecutePage.css'
-import createService from "../../../utils/createService";
+import createService from "../../../../utils/createService";
 
 export default class ExerciseExecutePage {
     uid = '';
