@@ -9,7 +9,7 @@ export default class ExerciseItem {
     /**
      *
      */
-    constructor(exerciseName) {
+    constructor(...item) {
         this.uid = createService.createUid('exerciseItem');
         this.$el = document.createElement('div');
         this.$el.classList.add('exercise-item');

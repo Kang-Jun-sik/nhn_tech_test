@@ -1,6 +1,6 @@
 export default class Scheduler {
-    #tickEvents = [];
-    #interval = 0;
+    tickEvents = [];
+    interval = 0;
     state = 0;
 
     /**
@@ -16,7 +16,7 @@ export default class Scheduler {
      * @param event 틱마다 실행될 이벤트 핸들러
      */
     addTickEvent(event) {
-        this.#tickEvents.push(event);
+        this.tickEvents.push(event);
     }
 
     /**
@@ -24,8 +24,8 @@ export default class Scheduler {
      * @param event 제거할 이벤트 핸들러
      */
     removeTickEvent(event) {
-        const idx = this.#tickEvents.findIndex(e => e === event);
-        this.#tickEvents.splice(idx, 1);
+        const idx = this.#ickEvents.findIndex(e => e === event);
+        this.tickEvents.splice(idx, 1);
     }
 
     /**
@@ -35,7 +35,7 @@ export default class Scheduler {
         this.stop();
         const self = this;
 
-        this.#interval = setInterval(() => {
+        this.interval = setInterval(() => {
             window.requestAnimationFrame(() => {
                 // this.#tickEvents.forEach(event => event(Date.now()));
                 self.state = Date.now();
@@ -47,6 +47,6 @@ export default class Scheduler {
      * 스케줄러 틱 이벤트 중지
      */
     stop() {
-        clearInterval(this.#interval);
+        clearInterval(this.#nterval);
     }
 }

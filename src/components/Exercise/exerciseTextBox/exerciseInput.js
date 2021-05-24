@@ -6,11 +6,7 @@ export default class ExerciseInput {
     uid = '';
     exerciseWrapperUid = '';
     routineWrapperUid = '';
-    exerciseName = '';
-    exerciseSecond = '';
-    exerciseSet = '';
     inputMode = '';
-
     /**
      *
      */
@@ -26,10 +22,10 @@ export default class ExerciseInput {
         this.$el.innerHTML = `
             <div class="exercise-input-wrapper">
                 <span> 이름 </span>
-                <input class="exercise-input-name" value="${this.exerciseName}" placeholder="운동입력"/>
-                <input class="exercise-input-second" value="${this.exerciseSecond}" type="number" placeholder="30"/>
+                <input class="exercise-input-name" placeholder="운동입력"/>
+                <input class="exercise-input-second" type="number" placeholder="30"/>
                 <sapn> 초 </sapn>
-                <input class="exercise-input-set" value="${this.exerciseSet}" type="number" placeholder="1"/>
+                <input class="exercise-input-set" type="number" placeholder="1"/>
                 <sapn> 세트 </sapn>
             </div>
             <div class="exercise-btn-wrapper">
@@ -73,8 +69,14 @@ export default class ExerciseInput {
 
             switch (this.inputMode) {
                 case "AddMode":
-                    const exerciseItemText = e.target.value;
-                    const exerciseItem = new ExerciseItem(exerciseItemText);
+                    if(!this.$el.querySelector('.exercise-input-name').value) {
+                        alert('운동이름은 필수값입니다');
+                        return;
+                    }
+                    const exerciseItemText = this.$el.querySelector('.exercise-input-name').value;
+                    const exerciseSecond =  exerciseSecond ? this.$el.querySelector('.exercise-input-second').value : 30;
+                    const exerciseSet = exerciseSet ? this.$el.querySelector('.exercise-input-set').value : 1;
+                    const exerciseItem = new ExerciseItem(exerciseItemText, exerciseSecond, exerciseSet);
                     exerciseItem.render();
                     exerciseWrapper.getExerciseItemsArea().appendChild(exerciseItem.$el);
                     selectedRoutine.exerciseItems.set(exerciseItem.uid, exerciseItem); //해당 루틴에 추가해준다.
