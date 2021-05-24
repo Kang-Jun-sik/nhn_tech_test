@@ -15,11 +15,9 @@ export default class ExecuteWrapper {
     executeItemsWrapperUid = '';
     totalTime = new Number();
     executingTime = new Number();
-    currentExercise = [];
     currentPoint = new Number(0);
+    currentExercise = [];
     setInterverId = '';
-
-
 
     /**
      *
@@ -45,7 +43,6 @@ export default class ExecuteWrapper {
 
         this.exerciseExecuteToolBar.executeWrapperUid = this.uid;
         this.exerciseExecuteButtons.executeWrapperUid = this.uid;
-
         this.executeItemsWrapperUid = this.executeItemsWrapper.uid;
         this.exerciseExecuteToolBoarUid = this.exerciseExecuteToolBar.uid;
     }
@@ -97,7 +94,7 @@ export default class ExecuteWrapper {
             clearInterval(this.setInterverId);
             return;
         }
-        if(parseInt(this.currentExercise[this.currentPoint].getAttribute('completiontime')) == this.executingTime){
+        if (parseInt(this.currentExercise[this.currentPoint].getAttribute('completiontime')) == this.executingTime) {
             this.currentExercise[this.currentPoint].style.background = 'grey';
             this.currentExercise[++this.currentPoint].style.background = 'yellow';
         }
