@@ -23,10 +23,22 @@ export default class ExerciseExecuteButton {
         const pageWrapper = window.instanceMap.get(exerciseWrapper.pageWrapperUid);
         const executeWrapper = window.instanceMap.get(exerciseWrapper.executeWrapperUid);
         const executeItemWrapper = window.instanceMap.get(executeWrapper.executeItemsWrapperUid);
-
+        const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
+        const totalTime = exerciseTime.settingTime();
+        let timeTemp = new Number(0);
         pageWrapper.hide();
+        routineWrapper.selectedRoutine.exerciseItems.forEach(function (item) {
+            timeTemp += (item.exerciseSecond * item.exerciseSet)
+            let executeItem = document.createElement('div');
+            let completionTime = totalTime - timeTemp
+            executeItem.setAttribute('uid', item.uid);
+            executeItem.setAttribute('completionTime', completionTime.toString());
+            executeItem.classList.add('execute-item');
+            executeItem.innerText = item.exerciseText;
+            executeItemWrapper.getExecuteItemsArea().appendChild(executeItem);
+        });
         executeWrapper.show();
-        routineWrapper.selectedRoutine.exerciseItems.forEach((value) => executeItemWrapper.getExecuteItemsArea().appendChild(value.$el));
+        executeWrapper.start();
     }
 
     onDisable() {

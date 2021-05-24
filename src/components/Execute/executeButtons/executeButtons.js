@@ -3,7 +3,7 @@ import createService from "../../../utils/createService";
 
 export default class ExecuteButtons {
     uid = '';
-    exerciseWrapperUid = '';
+    executeWrapperUid = '';
 
     /**
      *
@@ -36,19 +36,21 @@ export default class ExecuteButtons {
     }
 
     pauseBtnExecute(e){
-        console.log('test');
+        const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
+        executeWrapper.pause();
     }
 
     restartBtnExecute(e){
-        console.log('test');
+        const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
+        executeWrapper.restart();
     }
 
     stopBtnExecute(e){
-        console.log('test');
+        const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
+        executeWrapper.stop();
     }
 
     completeBtnExecute(e){
         console.log('test');
     }
-
 }

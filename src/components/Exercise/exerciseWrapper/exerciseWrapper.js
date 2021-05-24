@@ -68,7 +68,7 @@ export default class ExerciseWrapper {
         this.exerciseInputUid = this.exerciseInput.uid; //exercise wrapper <-- exercise Input
 
         this.exerciseInput.exerciseWrapperUid = this.uid; //exercise Input <-- exercise wrapper
-        this.exerciseTime.exerciseWrapperUid = this.uid;
+        this.exerciseTime.exerciseWrapperUid = this.uid; //exercise Time <-- exercise wrapper
         this.exerciseExecuteButton.exerciseWrapperUid = this.uid; //exercise Execute button <-- exercise wrapper
         this.exerciseDelBtn.exerciseWrapperUid = this.uid; //exercise Delete Button <-- exercise wrapper
         this.exerciseAddBtn.exerciseInputUid = this.exerciseInput.uid; //exercise Add button <-- exercise Input

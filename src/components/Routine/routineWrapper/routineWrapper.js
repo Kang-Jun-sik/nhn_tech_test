@@ -57,7 +57,7 @@ export default class RoutineWrapper {
     onSelectRoutineItem(e) {
         const routineItem = e.target.closest('.routine-item');
         const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
-
+        const time = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
         if (routineItem) {
             let rUid = routineItem.getAttribute('uid');
             this.selectedRoutine = window.instanceMap.get(rUid);
@@ -65,12 +65,14 @@ export default class RoutineWrapper {
             window.instanceMap.forEach(function (item) {
                 if (item.$el.classList.contains('selected'))
                     item.$el.classList.remove('selected');
-            })
+            });
+
             routineItem.classList.add('selected');
             exerciseWrapper.clearExerciseItems();
             this.selectedRoutine.exerciseItems.forEach((value) => exerciseWrapper.getExerciseItemsArea().appendChild(value.$el));
         }
         this.enableExercise();
+        time.settingTime();
     }
 
     enableExercise() {

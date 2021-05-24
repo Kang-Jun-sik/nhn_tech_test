@@ -104,6 +104,7 @@ export default class ExerciseInput {
                 selectExercise.exerciseName = exerciseItemText;
                 selectExercise.exerciseSecond = exerciseSecond;
                 selectExercise.exerciseSet = exerciseSet;
+                selectExercise.exerciseText = `${exerciseItemText} ${exerciseSecond}초 ${exerciseSet}세트`;
                 selectExercise.setExerciseText(`${exerciseItemText} ${exerciseSecond}초 ${exerciseSet}세트`);
                 this.clear();
                 this.hide();

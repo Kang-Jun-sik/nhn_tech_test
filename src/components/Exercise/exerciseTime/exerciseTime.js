@@ -30,6 +30,7 @@ export default class ExerciseTime {
             totalSeconds += (item.exerciseSecond * item.exerciseSet);
         });
         this.$el.innerText = timeformatter(totalSeconds);
+        return totalSeconds;
     }
 
     hide() {
@@ -41,5 +42,10 @@ export default class ExerciseTime {
     }
 
     onDisable() {
+
+    }
+
+    getTime() {
+        return this.settingTime();
     }
 }

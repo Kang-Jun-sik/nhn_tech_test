@@ -9,6 +9,7 @@ export default class ExerciseItem {
     exerciseName = '';
     exerciseSecond = '';
     exerciseSet = '';
+    completeTime = new Number();
 
     /**
      *

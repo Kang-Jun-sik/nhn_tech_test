@@ -51,7 +51,12 @@ export default class ExerciseApp {
         this.executeWrapper.hide();
 
         //컴포넌트간 통신을 위한 UID 주입
+        this.executeWrapper.exerciseWrapperUid = this.exerciseWrapper.uid;
+        this.executeWrapper.routineWrapperUid = this.routineWrapper.uid;
+        this.executeWrapper.pageWrapperUid = this.pageWrapper.uid;
+
         this.routineWrapper.exerciseWrapperUid = this.exerciseWrapper.uid;
+
         this.exerciseWrapper.routineWrapperUid = this.routineWrapper.uid;
         this.exerciseWrapper.pageWrapperUid = this.pageWrapper.uid;
         this.exerciseWrapper.executeWrapperUid = this.executeWrapper.uid;
