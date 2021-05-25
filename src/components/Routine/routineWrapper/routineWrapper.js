@@ -91,7 +91,8 @@ export default class RoutineWrapper {
         const exercise_del_btn = window.instanceMap.get(exerciseWrapper.exerciseDelBtnUid);
         const exercise_time = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
         const exercise_input = window.instanceMap.get(exerciseWrapper.exerciseInputUid);
-
+        const exercise_execute_btn = window.instanceMap.get(exerciseWrapper.exerciseExecuteButtonUid);
+        
         exercise_add_btn.onDisable();
         exercise_del_btn.onDisable();
         exercise_execute_btn.onDisable();

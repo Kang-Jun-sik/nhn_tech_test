@@ -30,8 +30,12 @@ export default class ExerciseExecuteButton {
         routineWrapper.selectedRoutine.exerciseItems.forEach(function (item) {
             timeTemp += (item.exerciseSecond * item.exerciseSet)
             executeItem = document.createElement('div');
-            completionTime = totalTime - timeTemp
+            completionTime = totalTime - timeTemp;
             executeItem.setAttribute('uid', item.uid);
+            executeItem.setAttribute('routine', routineWrapper.selectedRoutine.routineName);
+            executeItem.setAttribute('executeText', item.exerciseText);
+            executeItem.setAttribute('executeSecond', item.exerciseSecond);
+            executeItem.setAttribute('executeSet', item.exerciseSet);
             executeItem.setAttribute('completionTime', completionTime.toString());
             executeItem.classList.add('execute-item');
             executeItem.innerText = item.exerciseText;
