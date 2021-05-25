@@ -22,7 +22,7 @@ export default class ExecuteWrapper {
     exerciseSecond = 0;
 
     /**
-     *
+     * exerciseApp - 운동 실행 화면 생성 및 스케쥴링
      */
     constructor() {
         this.uid = createService.createUid('execute-wrapper');
@@ -66,7 +66,11 @@ export default class ExecuteWrapper {
     }
 
     start() {
-        this.header = window.instanceMap.get(this.headerUid);
+        const routineWrapper = window.instanceMap.get(this.routineWrapperUid);
+        if (routineWrapper.selectedRoutine.exerciseItems.size == 0) {
+            alert('시작할 운동 아이템이 존재하지 않습니다.');
+            return;
+        }
         this.setCount();
     }
 
@@ -74,8 +78,9 @@ export default class ExecuteWrapper {
         const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
         const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
         this.currentPoint = 0;
+        this.initExecute = 1;
         this.totalTime = exerciseTime.getTime();
-        this.executingTime = exerciseTime.getTime();
+        this.executingTime = 0;
         this.currentExercise = document.querySelectorAll('.execute-item');
         this.currentExercise[this.currentPoint].classList.add('executing');
         this.routine = this.currentExercise[this.currentPoint].getAttribute('routine');
@@ -83,8 +88,7 @@ export default class ExecuteWrapper {
         this.executeSet = this.currentExercise[this.currentPoint].getAttribute('executeSet');
         this.executeText = this.currentExercise[this.currentPoint].getAttribute('executeText');
         this.completionTime = this.currentExercise[this.currentPoint].getAttribute('completionTime');
-        this.remainSecond = this.executeSecond;
-        this.initExecute = 1;
+        this.remainSecond = 0;
         clearInterval(0);
         this.intervalID = setInterval(this.timer.bind(this), 1000);
     }
@@ -100,6 +104,7 @@ export default class ExecuteWrapper {
         clearInterval(0);
         this.hide();
         page.show();
+        document.querySelector(".header").innerHTML = '매일 운동 루틴';
     }
 
     restart() {
@@ -108,10 +113,10 @@ export default class ExecuteWrapper {
     }
 
     timer() {
-        this.executingTime--;
-        this.remainSecond--;
+        this.executingTime++;
+        this.remainSecond++;
 
-        if (this.executingTime == 0) {
+        if (this.executingTime == this.totalTime) {
             const executeButtons = window.instanceMap.get(this.executeButtonsUid);
             this.timeUpdate();
             this.headerCompleteUpdate();
@@ -123,10 +128,10 @@ export default class ExecuteWrapper {
             return;
         }
 
-        if (this.remainSecond == 0) {
+        if (this.remainSecond == this.executeSecond) {
             if (this.executeSet > this.initExecute) {
                 this.initExecute++;
-                this.remainSecond = this.executeSecond;
+                this.remainSecond = 0;
             }
         }
 
@@ -138,7 +143,7 @@ export default class ExecuteWrapper {
             this.executeSet = this.currentExercise[this.currentPoint].getAttribute('executeSet');
             this.executeText = this.currentExercise[this.currentPoint].getAttribute('executeText');
             this.completionTime = this.currentExercise[this.currentPoint].getAttribute('completionTime');
-            this.remainSecond = this.executeSecond;
+            this.remainSecond = 0;
             this.initExecute = 1;
         }
         this.timeUpdate();
@@ -155,7 +160,7 @@ export default class ExecuteWrapper {
             `${this.routine} : ${this.executeText} ${this.remainSecond}/${this.executeSecond}초 ${this.initExecute}세트 진행중`;
     }
 
-    headerCompleteUpdate(){
+    headerCompleteUpdate() {
         document.querySelector(".header").innerHTML = '모든 운동 완료!';
     }
 }

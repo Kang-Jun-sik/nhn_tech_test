@@ -22,16 +22,21 @@ export default class ExerciseDeleteButton {
         const routineWrapper = window.instanceMap.get(exerciseWrapper.routineWrapperUid);
         const selectedRoutine = routineWrapper.selectedRoutine;
 
+        //실제 인스턴스 맵에서 삭제
         let checkedItems = exerciseWrapper.getExerciseItemsArea().querySelectorAll('.exercise-item');
         checkedItems.forEach(function (item){
             if (item.querySelector('.exercise-item-checkbox').checked){
                 selectedRoutine.exerciseItems.delete(item.getAttribute('uid'));
             }
         });
+
+        //렌더링된 화면에서 삭제
         checkedItems.forEach(function (item) {
             if (item.querySelector('.exercise-item-checkbox').checked)
                 item.remove();
         });
+
+        //전체시간 재계산
         exerciseTime.settingTime();
     }
 

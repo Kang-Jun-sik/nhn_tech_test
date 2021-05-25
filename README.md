@@ -1,3 +1,19 @@
+# 운동 루틴 구현하기
+---
+제출자: 강준식
+
+이메일: kcu1436@naver.com
+
+- 개발 설정
+  - Webpack5
+  - Babel
+    - Polyfill
+      - core-js 3
+    - Plugins
+      - @babel/plugin-proposal-private-methods
+      - @babel/plugin-proposal-class-properties
+---
+
 # 구현 요구사항 체크리스트
 
 ## 기본 요구사항

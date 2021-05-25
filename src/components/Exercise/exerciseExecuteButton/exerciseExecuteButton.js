@@ -25,22 +25,27 @@ export default class ExerciseExecuteButton {
         const executeItemWrapper = window.instanceMap.get(executeWrapper.executeItemsWrapperUid);
         const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
         const totalTime = exerciseTime.settingTime();
+
         let executeItem, completionTime, timeTemp = 0;
         pageWrapper.hide();
+
+        //선택된 루틴의 아이템으로 운동 수행 리스트 UI 구성
         routineWrapper.selectedRoutine.exerciseItems.forEach(function (item) {
             timeTemp += (item.exerciseSecond * item.exerciseSet)
             executeItem = document.createElement('div');
-            completionTime = totalTime - timeTemp;
+            completionTime = item.exerciseSecond * item.exerciseSet;
             executeItem.setAttribute('uid', item.uid);
             executeItem.setAttribute('routine', routineWrapper.selectedRoutine.routineName);
             executeItem.setAttribute('executeText', item.exerciseText);
             executeItem.setAttribute('executeSecond', item.exerciseSecond);
             executeItem.setAttribute('executeSet', item.exerciseSet);
-            executeItem.setAttribute('completionTime', completionTime.toString());
+            executeItem.setAttribute('completionTime', timeTemp);
             executeItem.classList.add('execute-item');
             executeItem.innerText = item.exerciseText;
             executeItemWrapper.getExecuteItemsArea().appendChild(executeItem);
         });
+
+        //운동 수행 스케줄 시작
         executeWrapper.show();
         executeWrapper.start();
     }

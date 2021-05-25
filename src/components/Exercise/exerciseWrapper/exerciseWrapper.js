@@ -8,6 +8,7 @@ import ExerciseInput from "../exerciseTextBox/exerciseInput";
 import ExerciseExecuteButton from "../exerciseExecuteButton/exerciseExecuteButton";
 
 export default class ExerciseWrapper {
+
     uid = '';
     pageWrapperUid = '';
     executeWrapperUid = '';

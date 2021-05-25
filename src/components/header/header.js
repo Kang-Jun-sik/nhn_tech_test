@@ -16,10 +16,6 @@ export default class Header {
         this.headerText = headerText;
     }
 
-    setHeaderText(headerTitle) {
-        this.headerText = headerTitle;
-    }
-
     render() {
         return this.$el.innerHTML = `
             <p>${this.headerText}</p>

@@ -46,6 +46,11 @@ export default class RoutineTextBox {
 
     keydownHandler(e) {
         //Input Enter Key
+        if (!e.target.value) {
+            alert('루틴 이름은 필수값 입니다.');
+            return;
+        }
+
         if (e.keyCode === 13) {
             const routineWrapper = window.instanceMap.get(this.routineWrapperUid);
             switch (this.inputMode) {

@@ -1,6 +1,6 @@
 /**
- * 컴포넌트별 uid를 생성하기 위한 메소드
- * @param target 컴포넌트별 uid
+ * 초를 시간/분/초 포맷으로 변경
+ * @param s 초
  */
 export default function (s, fixed = 0) {
     s = typeof s === 'number' ? s : parseInt(s);

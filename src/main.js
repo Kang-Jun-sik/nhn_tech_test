@@ -6,7 +6,6 @@ export default class Main {
     constructor() {
 
     }
-
     //앱 메인 시작
     start(app) {
         console.log('app start!');

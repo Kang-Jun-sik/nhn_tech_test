@@ -19,8 +19,4 @@ export default class ExecuteToolBar {
             <p class="time-zone"></p>
         `;
     }
-
-    timeZone(){
-        return this.$el.querySelector('p');
-    }
 }
