@@ -6,7 +6,7 @@ export default class ExecuteButtons {
     executeWrapperUid = '';
 
     /**
-     *
+     * ExecuteItemsWrapper - 운동 수행 메인 버튼 컴포넌트 영역
      */
     constructor() {
         this.uid = createService.createUid('ExecuteButtons');

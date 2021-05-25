@@ -6,7 +6,7 @@ export default class ExerciseExecuteButton {
     exerciseWrapperUid = '';
 
     /**
-     * ExerciseItem - 운동 수행 버튼 컴포넌트
+     * ExerciseExecuteButton - 운동 수행 버튼 컴포넌트
      */
     constructor(buttonText) {
         this.uid = createService.createUid('exerciseExecuteBtn');

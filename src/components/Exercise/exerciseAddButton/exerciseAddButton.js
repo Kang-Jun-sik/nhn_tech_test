@@ -6,7 +6,7 @@ export default class ExerciseAddButton {
     exerciseInputUid = '';
 
     /**
-     *
+     * ExerciseAddButton - 운동 추가 버튼 컴포넌트 (입력기 Show)
      */
     constructor(buttonText) {
         this.uid = createService.createUid('exerciseAddButton');

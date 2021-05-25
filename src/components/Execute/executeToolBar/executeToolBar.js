@@ -6,7 +6,7 @@ export default class ExecuteToolBar {
     executeWrapperUid;
 
     /**
-     *
+     * ExecuteToolBar - 운동 수행 아이템들의 실시간 진행 상황 표시 컴포넌트
      */
     constructor() {
         this.uid = createService.createUid('executeToolBar');

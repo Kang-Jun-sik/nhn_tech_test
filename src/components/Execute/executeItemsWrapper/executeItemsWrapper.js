@@ -6,7 +6,7 @@ export default class ExecuteItemsWrapper {
     uid = '';
 
     /**
-     *
+     * ExecuteItemsWrapper - 운동 수행 항목들이 추가되는 영역
      */
     constructor() {
         this.uid = createService.createUid('executeItemsWrapper');
@@ -16,9 +16,5 @@ export default class ExecuteItemsWrapper {
 
     getExecuteItemsArea() {
         return this.$el;
-    }
-
-    clearExecuteItems() {
-        this.$el.querySelectorAll('.exercise-item').forEach(n => n.remove());
     }
 }

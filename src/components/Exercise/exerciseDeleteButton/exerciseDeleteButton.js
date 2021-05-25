@@ -6,7 +6,7 @@ export default class ExerciseDeleteButton {
     exerciseWrapperUid = '';
 
     /**
-     *
+     * ExerciseDeleteButton - 운동 아이템 삭제 버튼 컴포넌트
      */
     constructor(buttonText) {
         this.uid = createService.createUid('exerciseDeleteButton');

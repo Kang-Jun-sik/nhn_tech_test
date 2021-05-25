@@ -76,10 +76,6 @@ export default class ExerciseWrapper {
         this.exerciseAddBtn.exerciseInputUid = this.exerciseInput.uid;
     }
 
-    render() {
-
-    }
-
     getExerciseItemsArea() {
         return this.exerciseItemArea;
     }
