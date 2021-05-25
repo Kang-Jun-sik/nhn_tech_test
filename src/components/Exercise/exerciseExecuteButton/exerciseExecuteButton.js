@@ -23,8 +23,6 @@ export default class ExerciseExecuteButton {
         const pageWrapper = window.instanceMap.get(exerciseWrapper.pageWrapperUid);
         const executeWrapper = window.instanceMap.get(exerciseWrapper.executeWrapperUid);
         const executeItemWrapper = window.instanceMap.get(executeWrapper.executeItemsWrapperUid);
-        const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
-        const totalTime = exerciseTime.settingTime();
 
         let executeItem, completionTime, timeTemp = 0;
         pageWrapper.hide();

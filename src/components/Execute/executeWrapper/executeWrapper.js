@@ -77,10 +77,8 @@ export default class ExecuteWrapper {
     setCount() {
         const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
         const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
-        this.currentPoint = 0;
-        this.initExecute = 1;
         this.totalTime = exerciseTime.getTime();
-        this.executingTime = 0;
+        this.currentPoint = 0, this.executingTime = 0, this.remainSecond = 0, this.initExecute = 1;
         this.currentExercise = document.querySelectorAll('.execute-item');
         this.currentExercise[this.currentPoint].classList.add('executing');
         this.routine = this.currentExercise[this.currentPoint].getAttribute('routine');
@@ -88,7 +86,6 @@ export default class ExecuteWrapper {
         this.executeSet = this.currentExercise[this.currentPoint].getAttribute('executeSet');
         this.executeText = this.currentExercise[this.currentPoint].getAttribute('executeText');
         this.completionTime = this.currentExercise[this.currentPoint].getAttribute('completionTime');
-        this.remainSecond = 0;
         clearInterval(0);
         this.intervalID = setInterval(this.timer.bind(this), 1000);
     }
@@ -136,15 +133,15 @@ export default class ExecuteWrapper {
         }
 
         if (this.completionTime == this.executingTime) {
+            this.remainSecond = 0, this.initExecute = 1;
             this.currentExercise[this.currentPoint].classList.remove('executing');
             this.currentExercise[this.currentPoint].classList.add('done');
-            this.currentExercise[++this.currentPoint].classList.add('executing');
+            this.currentExercise[this.currentPoint].classList.add('executing');
+            this.currentPoint++;
             this.executeSecond = this.currentExercise[this.currentPoint].getAttribute('executeSecond');
             this.executeSet = this.currentExercise[this.currentPoint].getAttribute('executeSet');
             this.executeText = this.currentExercise[this.currentPoint].getAttribute('executeText');
             this.completionTime = this.currentExercise[this.currentPoint].getAttribute('completionTime');
-            this.remainSecond = 0;
-            this.initExecute = 1;
         }
         this.timeUpdate();
         this.headerUpdate();

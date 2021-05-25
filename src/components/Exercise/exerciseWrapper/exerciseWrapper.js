@@ -69,7 +69,6 @@ export default class ExerciseWrapper {
         this.exerciseTimeUid = this.exerciseTime.uid;
         this.exerciseInputUid = this.exerciseInput.uid;
         this.exerciseExecuteButtonUid = this.exerciseExecuteButton.uid;
-
         this.exerciseInput.exerciseWrapperUid = this.uid;
         this.exerciseTime.exerciseWrapperUid = this.uid;
         this.exerciseExecuteButton.exerciseWrapperUid = this.uid;

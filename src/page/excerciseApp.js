@@ -50,7 +50,6 @@ export default class ExerciseApp {
         this.executeWrapper.routineWrapperUid = this.routineWrapper.uid;
         this.executeWrapper.pageWrapperUid = this.pageWrapper.uid;
         this.exerciseWrapper.headerUid = this.header.uid;
-
         this.routineWrapper.exerciseWrapperUid = this.exerciseWrapper.uid;
         this.exerciseWrapper.routineWrapperUid = this.routineWrapper.uid;
         this.exerciseWrapper.pageWrapperUid = this.pageWrapper.uid;
