@@ -1,9 +1,9 @@
-import "../../utils/createService"
-import createService from "../../utils/createService";
-import ExecuteToolBar from "../Execute/executeToolBar/executeToolBar";
-import ExecuteButtons from "../Execute/executeButtons/executeButtons";
-import ExecuteItemsWrapper from "../Execute/executeItemsWrapper/executeItemsWrapper";
-import timeformatter from "../../utils/timeformatter";
+import "../../../utils/createService"
+import createService from "../../../utils/createService";
+import ExecuteToolBar from "../executeToolBar/executeToolBar";
+import ExecuteButtons from "../executeButtons/executeButtons";
+import ExecuteItemsWrapper from "../executeItemsWrapper/executeItemsWrapper";
+import timeformatter from "../../../utils/timeformatter";
 
 export default class ExecuteWrapper {
     uid = '';

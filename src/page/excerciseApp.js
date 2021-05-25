@@ -3,7 +3,7 @@ import HorizontalRuler from "../components/horizontalRule/horizontalRuler";
 import RoutineWrapper from "../components/Routine/routineWrapper/routineWrapper";
 import ExerciseWrapper from "../components/Exercise/exerciseWrapper/exerciseWrapper";
 import PageWrapper from "../components/wrapper/pageWrapper";
-import ExecuteWrapper from "../components/wrapper/executeWrapper";
+import ExecuteWrapper from "../components/Execute/executeWrapper/executeWrapper";
 
 export default class ExerciseApp {
 

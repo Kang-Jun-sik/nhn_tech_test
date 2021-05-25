@@ -12,6 +12,34 @@
     - Plugins
       - @babel/plugin-proposal-private-methods
       - @babel/plugin-proposal-class-properties
+    
+    - structure
+      - main
+          - exerciesApp(Page)
+            - header
+            - horizontalRule
+            - RoutineWrapper(Left-Side)
+              - routineAddButton(추가버튼)
+              - routineItem(루틴아이템)
+              - routineTextBox(입력부)
+            - ExerciseWrapper(Light-Side)
+              - exerciseAddButton(추가)
+              - exerciseDeleteButton(삭제)
+              - exerciseExecuteButton(실행)
+              - exerciseItem(아이템)
+              - exerciseTextBox(입력부)
+              - exerciseTime(시간)
+            - ExecuteWrapper(운동 실행 화면 및 스케쥴링 기능 수행)
+              - executeButtons (실행 영역 버튼 모음)
+              - executeItemsWrapper (운동 실행 아이템 추가 영역)
+              - executeToolBar(툴바 영역)
+        
+      - 컴포넌트간 통신 방법
+          - 전역으로 생성된 객체들을 접근할 수 있는 window.instanceMap을 이용
+          - 컴포넌트간 Uid(고유id)를 주입하는 방향으로 작업
+      - 유틸 함수
+          - timeformatter (초를 시간/분/초 포맷으로 변경)
+          
 ---
 
 # 구현 요구사항 체크리스트
