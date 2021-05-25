@@ -67,9 +67,9 @@ export default class RoutineWrapper {
             routineItem.classList.add('selected');
             exerciseWrapper.clearExerciseItems();
             this.selectedRoutine.exerciseItems.forEach((value) => exerciseWrapper.getExerciseItemsArea().appendChild(value.$el));
+            this.enableExercise();
+            time.settingTime();
         }
-        this.enableExercise();
-        time.settingTime();
     }
 
     enableExercise() {
@@ -77,9 +77,11 @@ export default class RoutineWrapper {
         const exercise_add_btn = window.instanceMap.get(exerciseWrapper.exerciseAddBtnUid);
         const exercise_del_btn = window.instanceMap.get(exerciseWrapper.exerciseDelBtnUid);
         const exercise_time = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
+        const exercise_execute_btn = window.instanceMap.get(exerciseWrapper.exerciseExecuteButtonUid);
 
         exercise_add_btn.onEnable();
         exercise_del_btn.onEnable();
+        exercise_execute_btn.onEnable();
         exercise_time.show();
     }
 
@@ -92,6 +94,7 @@ export default class RoutineWrapper {
 
         exercise_add_btn.onDisable();
         exercise_del_btn.onDisable();
+        exercise_execute_btn.onDisable();
         exercise_time.hide();
         exercise_input.hide();
     }

@@ -16,6 +16,7 @@ export default class ExerciseWrapper {
     exerciseDelBtnUid = '';
     exerciseTimeUid = '';
     exerciseInputUid = '';
+    exerciseExecuteButtonUid = '';
 
     /**
      * ExerciseWrapper - 운동 컨트롤러 컴포넌트
@@ -66,6 +67,8 @@ export default class ExerciseWrapper {
         this.exerciseDelBtnUid = this.exerciseDelBtn.uid;
         this.exerciseTimeUid = this.exerciseTime.uid;
         this.exerciseInputUid = this.exerciseInput.uid;
+        this.exerciseExecuteButtonUid = this.exerciseExecuteButton.uid;
+
         this.exerciseInput.exerciseWrapperUid = this.uid;
         this.exerciseTime.exerciseWrapperUid = this.uid;
         this.exerciseExecuteButton.exerciseWrapperUid = this.uid;

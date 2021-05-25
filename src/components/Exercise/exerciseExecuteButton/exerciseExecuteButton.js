@@ -14,7 +14,7 @@ export default class ExerciseExecuteButton {
         this.$el.classList.add('exercise-execute-button');
         this.$el.innerText = buttonText;
         this.$el.addEventListener('click', this.executeExercise.bind(this));
-        //this.onDisable();
+        this.onDisable();
     }
 
     executeExercise(e) {

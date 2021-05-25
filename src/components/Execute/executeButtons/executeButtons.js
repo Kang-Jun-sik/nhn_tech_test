@@ -59,12 +59,14 @@ export default class ExecuteButtons {
     stopBtnExecute(e) {
         const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
         executeWrapper.stop();
+        document.querySelector('.time-zone').innerText = '';
         document.querySelectorAll('.execute-item').forEach(n => n.remove());
     }
 
     completeBtnExecute(e) {
         const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
         executeWrapper.stop();
+        document.querySelector('.time-zone').innerText = '';
         document.querySelectorAll('.execute-item').forEach(n => n.remove());
     }
 }

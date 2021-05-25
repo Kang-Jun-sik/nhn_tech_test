@@ -4,8 +4,11 @@ import ExecuteToolBar from "../Execute/executeToolBar/executeToolBar";
 import ExecuteButtons from "../Execute/executeButtons/executeButtons";
 import ExecuteItemsWrapper from "../Execute/executeItemsWrapper/executeItemsWrapper";
 import timeformatter from "../../utils/timeformatter";
+import Header from "../header/header";
 
 export default class ExecuteWrapper {
+    headerUid = '';
+    header = '';
     uid = '';
     intervalID = '';
     pageWrapperUid = '';
@@ -64,12 +67,14 @@ export default class ExecuteWrapper {
     }
 
     start() {
+        this.header = window.instanceMap.get(this.headerUid);
         this.setCount();
     }
 
     setCount() {
         const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
         const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
+        this.currentPoint = 0;
         this.totalTime = exerciseTime.getTime();
         this.executingTime = exerciseTime.getTime();
         this.currentExercise = document.querySelectorAll('.execute-item');
@@ -88,6 +93,8 @@ export default class ExecuteWrapper {
         clearInterval(this.intervalID);
         clearInterval(0);
         this.hide();
+        this.header.setHeaderText("매일 운동 루틴");
+        this.header.render();
         page.show();
     }
 
@@ -109,16 +116,18 @@ export default class ExecuteWrapper {
             return;
         }
         if (parseInt(this.currentExercise[this.currentPoint].getAttribute('completiontime')) == this.executingTime) {
+            this.header.render();
             this.currentExercise[this.currentPoint].classList.remove('executing');
             this.currentExercise[this.currentPoint].classList.add('done');
             this.currentExercise[++this.currentPoint].classList.add('executing');
         }
         this.timeUpdate();
-
     }
 
     timeUpdate() {
         document.querySelector(".time-zone").innerHTML =
             `${timeformatter(this.executingTime)} / ${timeformatter(this.totalTime)}`;
     }
+
+
 }
