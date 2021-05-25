@@ -22,7 +22,7 @@
               - routineAddButton(추가버튼)
               - routineItem(루틴아이템)
               - routineTextBox(입력부)
-            - ExerciseWrapper(Light-Side)
+            - ExerciseWrapper(Right-Side)
               - exerciseAddButton(추가)
               - exerciseDeleteButton(삭제)
               - exerciseExecuteButton(실행)
