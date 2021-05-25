@@ -1,4 +1,3 @@
-import "./pageWrapper.css"
 import "../../utils/createService"
 import createService from "../../utils/createService";
 import ExecuteToolBar from "../Execute/executeToolBar/executeToolBar";
@@ -8,16 +7,17 @@ import timeformatter from "../../utils/timeformatter";
 
 export default class ExecuteWrapper {
     uid = '';
+    intervalID = '';
     pageWrapperUid = '';
     routineWrapperUid = ''
     exerciseWrapperUid = '';
+    executeButtonsUid = '';
     exerciseExecuteToolBoarUid = '';
     executeItemsWrapperUid = '';
-    totalTime = new Number();
-    executingTime = new Number();
-    currentPoint = new Number(0);
+    totalTime = 0;
+    executingTime = 0;
+    currentPoint = 0;
     currentExercise = [];
-    setInterverId = '';
 
     /**
      *
@@ -38,11 +38,13 @@ export default class ExecuteWrapper {
 
         this.exerciseExecuteButtons = new ExecuteButtons();
         this.exerciseExecuteButtons.render();
+        this.exerciseExecuteButtons.hideCompleteBtn();
         this.$el.appendChild(this.exerciseExecuteButtons.$el);
         window.instanceMap.set(this.exerciseExecuteButtons.uid, this.exerciseExecuteButtons);
 
         this.exerciseExecuteToolBar.executeWrapperUid = this.uid;
         this.exerciseExecuteButtons.executeWrapperUid = this.uid;
+        this.executeButtonsUid = this.exerciseExecuteButtons.uid;
         this.executeItemsWrapperUid = this.executeItemsWrapper.uid;
         this.exerciseExecuteToolBoarUid = this.exerciseExecuteToolBar.uid;
     }
@@ -53,10 +55,12 @@ export default class ExecuteWrapper {
 
     hide() {
         this.$el.style.display = 'none';
+        clearInterval(0);
     }
 
     show() {
         this.$el.style.display = 'block';
+        clearInterval(0);
     }
 
     start() {
@@ -69,34 +73,45 @@ export default class ExecuteWrapper {
         this.totalTime = exerciseTime.getTime();
         this.executingTime = exerciseTime.getTime();
         this.currentExercise = document.querySelectorAll('.execute-item');
-        this.currentExercise[this.currentPoint].style.background = 'yellow';
-        this.setInterverId = setInterval(this.timer.bind(this), 1000);
+        this.currentExercise[this.currentPoint].classList.add('executing');
+        clearInterval(0);
+        this.intervalID = setInterval(this.timer.bind(this), 1000);
     }
 
     pause() {
-        clearInterval(this.setInterverId);
+        clearInterval(this.intervalID);
+        clearInterval(0);
     }
 
     stop() {
         const page = window.instanceMap.get(this.pageWrapperUid);
+        clearInterval(this.intervalID);
         clearInterval(0);
         this.hide();
         page.show();
     }
 
     restart() {
-        this.setInterverId = setInterval(this.timer.bind(this), 1000);
+        clearInterval(this.intervalID);
+        this.intervalID = setInterval(this.timer.bind(this), 1000);
     }
 
     timer() {
         this.executingTime--;
         if (this.executingTime == 0) {
-            clearInterval(this.setInterverId);
+            const executeButtons = window.instanceMap.get(this.executeButtonsUid);
+            this.timeUpdate();
+            this.currentExercise[this.currentPoint].classList.remove('executing');
+            this.currentExercise[this.currentPoint].classList.add('done');
+            executeButtons.showCompleteBtn();
+            clearInterval(this.intervalID);
+            clearInterval(0);
             return;
         }
         if (parseInt(this.currentExercise[this.currentPoint].getAttribute('completiontime')) == this.executingTime) {
-            this.currentExercise[this.currentPoint].style.background = 'grey';
-            this.currentExercise[++this.currentPoint].style.background = 'yellow';
+            this.currentExercise[this.currentPoint].classList.remove('executing');
+            this.currentExercise[this.currentPoint].classList.add('done');
+            this.currentExercise[++this.currentPoint].classList.add('executing');
         }
         this.timeUpdate();
 

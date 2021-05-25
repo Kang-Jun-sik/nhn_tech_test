@@ -7,14 +7,16 @@
 }
 
 .execute-item {
-    margin-top: 10px;
-    background: white;
+    height: 40px;
+    padding-top: 20px;
+    font-family: sans-serif;
 }
 
 .execute-item.done {
-
+    text-decoration: line-through;
 }
 
 .execute-item.executing {
-
+    background: #F0F8FF;
+    border: 1px dotted red;
 }

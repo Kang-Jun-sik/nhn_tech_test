@@ -6,7 +6,7 @@ export default class ExerciseExecuteButton {
     exerciseWrapperUid = '';
 
     /**
-     *
+     * ExerciseItem - 운동 수행 버튼 컴포넌트
      */
     constructor(buttonText) {
         this.uid = createService.createUid('exerciseExecuteBtn');
@@ -25,12 +25,12 @@ export default class ExerciseExecuteButton {
         const executeItemWrapper = window.instanceMap.get(executeWrapper.executeItemsWrapperUid);
         const exerciseTime = window.instanceMap.get(exerciseWrapper.exerciseTimeUid);
         const totalTime = exerciseTime.settingTime();
-        let timeTemp = new Number(0);
+        let executeItem, completionTime, timeTemp = 0;
         pageWrapper.hide();
         routineWrapper.selectedRoutine.exerciseItems.forEach(function (item) {
             timeTemp += (item.exerciseSecond * item.exerciseSet)
-            let executeItem = document.createElement('div');
-            let completionTime = totalTime - timeTemp
+            executeItem = document.createElement('div');
+            completionTime = totalTime - timeTemp
             executeItem.setAttribute('uid', item.uid);
             executeItem.setAttribute('completionTime', completionTime.toString());
             executeItem.classList.add('execute-item');

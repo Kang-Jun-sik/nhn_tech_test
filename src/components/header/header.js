@@ -7,7 +7,7 @@ export default class Header {
     uid = '';
 
     /**
-     *
+     * header - 상단 헤더 영역 컴포넌트
      */
     constructor(headerText) {
         this.uid = createService.createUid('header');

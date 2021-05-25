@@ -7,13 +7,8 @@ import ExecuteWrapper from "../components/wrapper/executeWrapper";
 
 export default class ExerciseApp {
 
-    header = {};
-    divider = {};
-    routineWrapper = {};
-    exerciseWrapper = {};
-
     /**
-     * 메인 앱을 구성하는 각 컴포넌트들을 생성.
+     * exerciseApp - 메인 앱을 구성하는 컴포넌트
      */
     constructor(app) {
         this.$el = app;
@@ -54,9 +49,7 @@ export default class ExerciseApp {
         this.executeWrapper.exerciseWrapperUid = this.exerciseWrapper.uid;
         this.executeWrapper.routineWrapperUid = this.routineWrapper.uid;
         this.executeWrapper.pageWrapperUid = this.pageWrapper.uid;
-
         this.routineWrapper.exerciseWrapperUid = this.exerciseWrapper.uid;
-
         this.exerciseWrapper.routineWrapperUid = this.routineWrapper.uid;
         this.exerciseWrapper.pageWrapperUid = this.pageWrapper.uid;
         this.exerciseWrapper.executeWrapperUid = this.executeWrapper.uid;

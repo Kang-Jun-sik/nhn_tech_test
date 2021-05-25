@@ -10,7 +10,7 @@ export default class ExerciseInput {
     modifyExerciseItemUid = '';
 
     /**
-     *
+     * ExerciseInput - 운동 아이템 입력부 관련 컴포넌트
      */
     constructor() {
         this.uid = createService.createUid('exerciseInput');
@@ -96,10 +96,10 @@ export default class ExerciseInput {
                 exerciseItem.render();
                 exerciseWrapper.getExerciseItemsArea().appendChild(exerciseItem.$el);
                 selectedRoutine.exerciseItems.set(exerciseItem.uid, exerciseItem); //해당 루틴에 추가해준다.
-
                 this.clear();
                 this.hide();
                 break;
+
             case 'Modify' :
                 selectExercise.exerciseName = exerciseItemText;
                 selectExercise.exerciseSecond = exerciseSecond;
@@ -130,7 +130,6 @@ export default class ExerciseInput {
     validateExerciseSet(param) {
         return param ? param : 1;
     }
-
 
     keydownButtonBinding() {
         this.$el.addEventListener('keydown', this.keydownExecute.bind(this))

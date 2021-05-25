@@ -23,6 +23,7 @@ export default class ExecuteButtons {
         `;
         this.eventHandler();
     }
+
     eventHandler() {
         const pauseBtn = this.$el.querySelector('.execute-pause-btn');
         const restartBtn = this.$el.querySelector('.execute-restart-btn');
@@ -35,22 +36,35 @@ export default class ExecuteButtons {
         completeBtn.addEventListener('click', this.completeBtnExecute.bind(this));
     }
 
-    pauseBtnExecute(e){
+    showCompleteBtn() {
+        let completed = this.$el.querySelector('.exercise-complete-btn');
+        completed.style.display = 'inline-block';
+    }
+
+    hideCompleteBtn() {
+        let completed = this.$el.querySelector('.exercise-complete-btn');
+        completed.style.display = 'none';
+    }
+
+    pauseBtnExecute(e) {
         const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
         executeWrapper.pause();
     }
 
-    restartBtnExecute(e){
+    restartBtnExecute(e) {
         const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
         executeWrapper.restart();
     }
 
-    stopBtnExecute(e){
+    stopBtnExecute(e) {
         const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
         executeWrapper.stop();
+        document.querySelectorAll('.execute-item').forEach(n => n.remove());
     }
 
-    completeBtnExecute(e){
-        console.log('test');
+    completeBtnExecute(e) {
+        const executeWrapper = window.instanceMap.get(this.executeWrapperUid);
+        executeWrapper.stop();
+        document.querySelectorAll('.execute-item').forEach(n => n.remove());
     }
 }

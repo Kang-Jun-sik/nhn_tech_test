@@ -9,11 +9,11 @@ export default class ExerciseItem {
     exerciseName = '';
     exerciseSecond = '';
     exerciseSet = '';
-    completeTime = new Number();
 
     /**
-     *
+     * ExerciseItem - 운동 아이템 컴포넌트
      */
+
     constructor(...item) {
         this.uid = createService.createUid('exerciseItem');
         this.$el = document.createElement('div');
@@ -25,7 +25,7 @@ export default class ExerciseItem {
         this.exerciseText = `${this.exerciseName} ${this.exerciseSecond}초 ${this.exerciseSet}세트`;
     }
 
-    setExerciseText(param){
+    setExerciseText(param) {
         this.$el.querySelector('.exercise-item-text').textContent = param;
     }
 
@@ -49,7 +49,7 @@ export default class ExerciseItem {
 
     modifyExerciseItem(e) {
         const exerciseInput = window.instanceMap.get(this.exerciseInputUid);
-        exerciseInput.inputMode = "Modify"; //수정모드로 세팅
+        exerciseInput.inputMode = "Modify";
         exerciseInput.modifyExerciseItemUid = this.uid;
         exerciseInput.show();
         exerciseInput.settingExerciseInfo(this.exerciseName, this.exerciseSecond, this.exerciseSet);

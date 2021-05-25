@@ -3,10 +3,10 @@ import createService from "../../../utils/createService";
 
 export default class RoutineAddButton {
     uid = '';
-    routineTextBoxUid = ''; //routineTextBox 제어
+    routineTextBoxUid = '';
 
     /**
-     *
+     * RoutineWrapper - 운동 루틴 추가 버튼 컴포넌트
      */
     constructor(buttonText) {
         this.uid = createService.createUid('routineAddButton');

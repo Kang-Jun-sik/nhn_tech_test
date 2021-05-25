@@ -3,16 +3,17 @@
     cursor: pointer;
 }
 
-.routine-item.selected{
+.routine-item.selected {
     background: #F0F8FF;
+    border: 1px dotted red;
 }
 
-.routine-name{
+.routine-name {
     display: inline-block;
     cursor: pointer;
 }
 
-.routine-item-btn{
+.routine-item-btn {
     border-radius: 10px;
     height: 30px;
     float: right;

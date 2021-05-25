@@ -7,7 +7,7 @@ export default class ExerciseTime {
     exerciseWrapperUid = '';
 
     /**
-     *
+     * ExerciseTime - 운동 전체 시간 표시 관련 컴포넌트
      */
     constructor() {
         this.uid = createService.createUid('exercise-time');
@@ -18,7 +18,7 @@ export default class ExerciseTime {
     }
 
     settingTime() {
-        let totalSeconds = new Number();
+        let totalSeconds = 0;
         const exerciseWrapper = window.instanceMap.get(this.exerciseWrapperUid);
         const routineWrapper = window.instanceMap.get(exerciseWrapper.routineWrapperUid);
         const selectedRoutine = routineWrapper.selectedRoutine;
@@ -29,6 +29,7 @@ export default class ExerciseTime {
         selectedRoutine.exerciseItems.forEach(function (item) {
             totalSeconds += (item.exerciseSecond * item.exerciseSet);
         });
+        
         this.$el.innerText = timeformatter(totalSeconds);
         return totalSeconds;
     }

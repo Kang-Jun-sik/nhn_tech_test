@@ -1,4 +1,3 @@
-import "./pageWrapper.css"
 import "../../utils/createService"
 import createService from "../../utils/createService";
 
@@ -6,9 +5,9 @@ export default class PageWrapper {
     uid = '';
 
     /**
-     * PageWrapper 객체 생성 (RoutineWrapper + ExerciseWrapper)
+     * PageWrapper - RoutineWrapper,ExerciseWrapper를 감싸는 컴포넌트
      */
-    constructor(headerText) {
+    constructor() {
         this.uid = createService.createUid('page-wrapper');
         this.$el = document.createElement('div');
         this.$el.classList.add('page-wrapper');

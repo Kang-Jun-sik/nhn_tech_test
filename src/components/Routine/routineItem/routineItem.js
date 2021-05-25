@@ -9,7 +9,7 @@ export default class RoutineItem {
     exerciseItems = new Map();
 
     /**
-     *
+     * RoutineWrapper - 운동 루틴 아이템 컴포넌트
      */
     constructor(routineName) {
         this.uid = createService.createUid('routineItem');

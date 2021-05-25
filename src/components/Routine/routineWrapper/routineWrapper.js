@@ -8,12 +8,9 @@ export default class RoutineWrapper {
     uid = '';
     selectedRoutine;
     exerciseWrapperUid;
-    routineAddBtn = {};
-    divider = {};
-    routineTextBox = {};
 
     /**
-     *
+     * RoutineWrapper - 운동 루틴 컨트롤러 컴포넌트
      */
     constructor() {
         this.uid = createService.createUid('routineWrapper');
@@ -41,8 +38,8 @@ export default class RoutineWrapper {
         this.routineItemsArea.addEventListener('mousedown', this.onSelectRoutineItem.bind(this))
 
         //컴포넌트간 통신을 위한 UID 주입
-        this.routineAddBtn.routineTextBoxUid = this.routineTextBox.uid //routineAddbtn <-- routineTextBox
-        this.routineTextBox.routineWrapperUid = this.uid; //routineTextBox <-- routineWrapper
+        this.routineAddBtn.routineTextBoxUid = this.routineTextBox.uid
+        this.routineTextBox.routineWrapperUid = this.uid;
     }
 
     render() {

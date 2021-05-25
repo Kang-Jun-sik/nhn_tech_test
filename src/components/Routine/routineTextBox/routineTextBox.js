@@ -9,7 +9,7 @@ export default class RoutineTextBox {
     modifyRoutineItemUid = '';
 
     /**
-     *
+     * RoutineWrapper - 운동 루틴 입력부 컴포넌트
      */
     constructor() {
         this.uid = createService.createUid('routineTextBox');
@@ -45,7 +45,6 @@ export default class RoutineTextBox {
     }
 
     keydownHandler(e) {
-
         //Input Enter Key
         if (e.keyCode === 13) {
             const routineWrapper = window.instanceMap.get(this.routineWrapperUid);

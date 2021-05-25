@@ -18,7 +18,7 @@ export default class ExerciseWrapper {
     exerciseInputUid = '';
 
     /**
-     *
+     * ExerciseWrapper - 운동 컨트롤러 컴포넌트
      */
     constructor() {
         //Exercise Wrapper 생성
@@ -62,16 +62,15 @@ export default class ExerciseWrapper {
         window.instanceMap.set(this.exerciseExecuteButton.uid, this.exerciseExecuteButton);
 
         //컴포넌트간 통신을 위한 UID 주입
-        this.exerciseAddBtnUid = this.exerciseAddBtn.uid; //exercise wrapper <-- exercise Add button
-        this.exerciseDelBtnUid = this.exerciseDelBtn.uid; //exercise wrapper <-- exercise Del button
-        this.exerciseTimeUid = this.exerciseTime.uid; //exercise wrapper <-- exercise Time
-        this.exerciseInputUid = this.exerciseInput.uid; //exercise wrapper <-- exercise Input
-
-        this.exerciseInput.exerciseWrapperUid = this.uid; //exercise Input <-- exercise wrapper
-        this.exerciseTime.exerciseWrapperUid = this.uid; //exercise Time <-- exercise wrapper
-        this.exerciseExecuteButton.exerciseWrapperUid = this.uid; //exercise Execute button <-- exercise wrapper
-        this.exerciseDelBtn.exerciseWrapperUid = this.uid; //exercise Delete Button <-- exercise wrapper
-        this.exerciseAddBtn.exerciseInputUid = this.exerciseInput.uid; //exercise Add button <-- exercise Input
+        this.exerciseAddBtnUid = this.exerciseAddBtn.uid;
+        this.exerciseDelBtnUid = this.exerciseDelBtn.uid;
+        this.exerciseTimeUid = this.exerciseTime.uid;
+        this.exerciseInputUid = this.exerciseInput.uid;
+        this.exerciseInput.exerciseWrapperUid = this.uid;
+        this.exerciseTime.exerciseWrapperUid = this.uid;
+        this.exerciseExecuteButton.exerciseWrapperUid = this.uid;
+        this.exerciseDelBtn.exerciseWrapperUid = this.uid;
+        this.exerciseAddBtn.exerciseInputUid = this.exerciseInput.uid;
     }
 
     render() {
